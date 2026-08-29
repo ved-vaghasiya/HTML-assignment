@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Form Structure</title>
+</head>
+<body>
+
+    #1
+
+
+  <h2>Basic Form</h2>
+  <form action="/submit.php" method="post" autocomplete="on">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="Enter username" required>
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #2
+
+  <h2>Search Form (GET Method)</h2>
+  <!-- Form using GET method appends input values into the query string of the URL -->
+  <form action="/search.php" method="get">
+    <div>
+      <label for="site-search">Search Website:</label>
+      <input type="search" id="site-search" name="q" placeholder="Type search query...">
+    </div>
+    <br>
+    <button type="submit">Search</button>
+  </form>
+
+  #3
+
+  <h2>Form with novalidate</h2>
+  <!-- novalidate disables client-side HTML5 validation checks when submitting -->
+  <form action="/submit.php" method="post" novalidate>
+    <div>
+      <label for="user_email">Email (Required Field):</label>
+      <input type="email" id="user_email" name="email" required placeholder="name@example.com">
+    </div>
+    <br>
+    <button type="submit">Submit Without Validation</button>
+  </form>
+
+  #4
+
+   <h2>Form with Default Encoding</h2>
+  <!-- 
+    WHY application/x-www-form-urlencoded IS THE DEFAULT:
+    This encoding converts spaces to '+' and special characters into hexadecimal ASCII values 
+    (URL encoding). It is efficient for standard text-based form submissions.
+  -->
+  <form action="/submit.php" method="post" enctype="application/x-www-form-urlencoded">
+    <div>
+      <label for="full_name">Full Name:</label>
+      <input type="text" id="full_name" name="full_name">
+    </div>
+    <br>
+    <div>
+      <label for="user_email">Email Address:</label>
+      <input type="email" id="user_email" name="user_email">
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #5
+
+  <body>
+  <h2>File Upload Form</h2>
+  <!-- 
+    WHY multipart/form-data IS MANDATORY FOR FILE UPLOADS:
+    Binary files (images, PDFs, documents) contain raw bytes that cannot be percent-encoded safely. 
+    multipart/form-data splits the HTTP request body into MIME parts to transmit raw binary stream data.
+  -->
+  <form action="/upload.php" method="post" enctype="multipart/form-data">
+    <div>
+      <label for="user_file">Select File to Upload:</label>
+      <input type="file" id="user_file" name="user_file">
+    </div>
+    <br>
+    <button type="submit">Upload File</button>
+  </form>
+
+  #6
+
+  <h2>Form with text/plain Encoding</h2>
+  <!-- 
+    NOTE: enctype="text/plain" sends data as raw text without URL encoding. 
+    It is rarely used in real projects because servers cannot easily parse it automatically.
+  -->
+  <form action="/submit.php" method="post" enctype="text/plain">
+    <div>
+      <label for="fname">First Name:</label>
+      <input type="text" id="fname" name="fname">
+    </div>
+    <br>
+    <div>
+      <label for="lname">Last Name:</label>
+      <input type="text" id="lname" name="lname">
+    </div>
+    <br>
+    <button type="submit">Submit Plain Text</button>
+  </form>
+
+  #7
+
+   <h2>Form Opening in New Tab</h2>
+  <!-- name specifies form DOM identifier; target="_blank" loads response in a new tab -->
+  <form action="/submit.php" method="post" name="userForm" target="_blank">
+    <div>
+      <label for="note">Feedback Note:</label>
+      <input type="text" id="note" name="note" placeholder="Enter your note">
+    </div>
+    <br>
+    <button type="submit">Submit to New Tab</button>
+  </form>
+
+  #8
+
+  <h2>Accessible Form Label</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <!-- 'for' matches input 'id' for screen reader accessibility and click focus -->
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" placeholder="user@example.com">
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #9
+
+   <h2>Gender Selection</h2>
+  <form action="/submit.php" method="post">
+    <p>Please select your gender:</p>
+    <div>
+      <input type="radio" id="gender_male" name="gender" value="male" checked>
+      <label for="gender_male">Male</label>
+    </div>
+    <div>
+      <input type="radio" id="gender_female" name="gender" value="female">
+      <label for="gender_female">Female</label>
+    </div>
+    <div>
+      <input type="radio" id="gender_other" name="gender" value="other">
+      <label for="gender_other">Other</label>
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #10
+
+   <h2>Select Your Hobbies</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <input type="checkbox" id="hobby_reading" name="hobbies" value="reading" checked>
+      <label for="hobby_reading">Reading</label>
+    </div>
+    <div>
+      <input type="checkbox" id="hobby_sports" name="hobbies" value="sports">
+      <label for="hobby_sports">Sports</label>
+    </div>
+    <div>
+      <input type="checkbox" id="hobby_music" name="hobbies" value="music" checked>
+      <label for="hobby_music">Music</label>
+    </div>
+    <br>
+    <button type="submit">Save Hobbies</button>
+  </form>
+
+  #11
+
+   <h2>Select a Car Brand</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="cars">Choose a car:</label>
+      <select name="cars" id="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #12
+
+    <h2>Multi-select Cars (Hold Ctrl/Cmd to select multiple)</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="cars_multi">Choose cars:</label><br><br>
+      <select name="cars" id="cars_multi" multiple size="3">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #13
+
+   <h2>Select a Fruit</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="fruits">Choose a fruit:</label>
+      <select name="fruits" id="fruits">
+        <optgroup label="Citrus Fruits">
+          <option value="orange">Orange</option>
+          <option value="lemon">Lemon</option>
+          <option value="lime">Lime</option>
+        </optgroup>
+        <optgroup label="Berries">
+          <option value="strawberry">Strawberry</option>
+          <option value="blueberry">Blueberry</option>
+          <option value="raspberry">Raspberry</option>
+        </optgroup>
+      </select>
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #14
+
+   <h2>User Comments</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="user_comments">Your Feedback:</label><br>
+      <textarea id="user_comments" name="user_comments" rows="4" cols="50" placeholder="Type comments here..."></textarea>
+    </div>
+    <br>
+    <button type="submit">Send Comments</button>
+  </form>
+
+  #15
+
+   <h2>Three Button Types</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="info">Information:</label>
+      <input type="text" id="info" name="info" value="Sample Text">
+    </div>
+    <br>
+    <div>
+      <button type="submit">Submit Form</button>
+      <button type="reset">Reset Form</button>
+      <button type="button" onclick="alert('Custom JS clicked')">Custom Action</button>
+    </div>
+  </form>
+
+  #16
+  
+   <h2>Personal Details</h2>
+  <form action="/submit.php" method="post">
+    <fieldset>
+      <legend>Personal Information</legend>
+      <div>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name">
+      </div>
+      <br>
+      <div>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name">
+      </div>
+    </fieldset>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #17
+
+  <h2>Disabled Input Group</h2>
+  <form action="/submit.php" method="post">
+    <fieldset disabled>
+      <legend>Account Credentials (Disabled)</legend>
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="johndoe">
+      </div>
+      <br>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value="secret123">
+      </div>
+    </fieldset>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #18
+
+    <h2>Select or Type Browser</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="browser_choice">Choose browser:</label>
+      <input list="browsers" id="browser_choice" name="browser" placeholder="Type to filter...">
+      
+      <datalist id="browsers">
+        <option value="Google Chrome">
+        <option value="Mozilla Firefox">
+        <option value="Apple Safari">
+        <option value="Microsoft Edge">
+        <option value="Opera">
+      </datalist>
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #19
+
+   <h2>Secure Password Entry</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="user_pass">Password (Min 8 characters):</label>
+      <input type="password" id="user_pass" name="user_pass" required minlength="8">
+    </div>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  #20
+
+  <h2>Invite Teammates</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="email_list">Email Addresses:</label><br>
+      <input type="email" id="email_list" name="email_list" multiple placeholder="alex@example.com, sam@example.com">
+    </div>
+    <br>
+    <button type="submit">Send Invites</button>
+  </form>
+
+  #21
+
+   <h2>Select Date in 2023</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="event_date">Event Date (2023 Only):</label>
+      <input type="date" id="event_date" name="event_date" min="2023-01-01" max="2023-12-31">
+    </div>
+    <br>
+    <button type="submit">Book Date</button>
+  </form>
+
+  #22
+
+   <h2>Select Quantity</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="quantity">Quantity (1 to 10):</label>
+      <input type="number" id="quantity" name="quantity" min="1" max="10" step="1" value="1">
+    </div>
+    <br>
+    <button type="submit">Update Quantity</button>
+  </form>
+
+  #23
+
+  <h2>Volume Slider</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="volume">Volume Control (0 - 100):</label><br>
+      <input type="range" id="volume" name="volume" min="0" max="100" value="50">
+    </div>
+    <br>
+    <button type="submit">Save Settings</button>
+  </form>
+
+  #24
+
+   <h2>Document Upload</h2>
+  <form action="/upload.php" method="post" enctype="multipart/form-data">
+    <div>
+      <label for="doc">Select Document (.pdf, .docx only):</label>
+      <input type="file" id="doc" name="document" accept=".pdf,.docx" required>
+    </div>
+    <br>
+    <button type="submit">Upload Document</button>
+  </form>
+
+  #25
+
+   <h2>Form with Hidden Token</h2>
+  <form action="/submit.php" method="post">
+    <!-- Session token passed invisibly -->
+    <input type="hidden" id="session_token" name="session_token" value="abc123token789">
+    <div>
+      <label for="user_note">User Note:</label>
+      <input type="text" id="user_note" name="user_note">
+    </div>
+    <br>
+    <button type="submit">Submit Form</button>
+  </form>
+
+  #26
+
+   <h2>Favorite Color Picker</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="fav_color">Favorite Color:</label>
+      <input type="color" id="fav_color" name="fav_color" value="#ff0000">
+    </div>
+    <br>
+    <button type="submit">Save Color</button>
+  </form>
+
+  #27
+
+   <h2>Phone Number Input</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="phone">Phone Number (Format: 123-456-7890):</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
+    </div>
+    <br>
+    <button type="submit">Submit Phone</button>
+  </form>
+
+  #28
+
+  <h2>Website URL</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="website">Website Link:</label>
+      <input type="url" id="website" name="website" placeholder="https://example.com" required>
+    </div>
+    <br>
+    <button type="submit">Submit URL</button>
+  </form>
+
+  #29
+
+   <h2>Search Box with Autofocus</h2>
+  <form action="/search.php" method="get">
+    <div>
+      <label for="search">Search Site:</label>
+      <input type="search" id="search" name="query" autofocus placeholder="Search topics...">
+    </div>
+    <br>
+    <button type="submit">Search</button>
+  </form>
+
+  #30
+
+  <h2>Form with Input Outside Form Tags</h2>
+  <form id="externalForm" action="/submit.php" method="post">
+    <div>
+      <label for="inside_input">Inside Field:</label>
+      <input type="text" id="inside_input" name="inside_input" placeholder="Inside form tag">
+    </div>
+    <br>
+    <button type="submit">Submit Form</button>
+  </form>
+
+  #31
+
+   <h2>Submission Endpoint Override</h2>
+  <form action="/default_submit.php" method="post">
+    <div>
+      <label for="data">Data Payload:</label>
+      <input type="text" id="data" name="data">
+    </div>
+    <br>
+    <div>
+      <button type="submit">Submit to Default Server</button>
+      <button type="submit" formaction="/alternate_submit.php">Submit to Alternate Server</button>
+    </div>
+  </form>
+
+  #32
+  
+   <h2>HTTP Method Override</h2>
+  <form action="/process.php" method="post">
+    <div>
+      <label for="search_term">Query Term:</label>
+      <input type="text" id="search_term" name="search_term">
+    </div>
+    <br>
+    <div>
+      <button type="submit">Submit via POST (Default)</button>
+      <button type="submit" formmethod="get">Submit via GET</button>
+    </div>
+  </form>
+
+  #33
+
+   <h2>Registration Form with Save Draft</h2>
+  <form action="/register.php" method="post">
+    <div>
+      <label for="reg_username">Username (Required):</label>
+      <input type="text" id="reg_username" name="username" required>
+    </div>
+    <br>
+    <div>
+      <label for="reg_email">Email (Required):</label>
+      <input type="email" id="reg_email" name="email" required>
+    </div>
+    <br>
+    <div>
+      <button type="submit">Complete Registration</button>
+      <button type="submit" formaction="/save_draft.php" formnovalidate>Save as Draft</button>
+    </div>
+  </form>
+
+  #34
+
+   <h2>Submission Target Override</h2>
+  <form action="/submit.php" method="post">
+    <div>
+      <label for="content">Article Content:</label><br>
+      <textarea id="content" name="content" rows="4" cols="40"></textarea>
+    </div>
+    <br>
+    <div>
+      <button type="submit">Submit (Same Tab)</button>
+      <button type="submit" formaction="/preview.php" formtarget="_blank">Preview in New Tab</button>
+    </div>
+  </form>
+
+  #35
+
+   <h2>User Login</h2>
+  <form action="/login.php" method="post">
+    <div>
+      <label for="login_username">Username:</label>
+      <input type="text" id="login_username" name="username" required placeholder="Enter username">
+    </div>
+    <br>
+    <div>
+      <label for="login_password">Password:</label>
+      <input type="password" id="login_password" name="password" required minlength="8" placeholder="At least 8 characters">
+    </div>
+    <br>
+    <button type="submit">Log In</button>
+  </form>
+
+  #36
+
+   <h2>User Registration</h2>
+  <form action="/register.php" method="post">
+    <fieldset>
+      <legend>Personal Information</legend>
+      <div>
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required>
+      </div>
+      <br>
+      <div>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+    </fieldset>
+    <br>
+    <fieldset>
+      <legend>Preferences</legend>
+      <div>
+        <input type="checkbox" id="newsletter" name="newsletter" value="yes" checked>
+        <label for="newsletter">Subscribe to monthly newsletter</label>
+      </div>
+    </fieldset>
+    <br>
+    <button type="submit">Register Account</button>
+  </form>
+
+  #37
+
+   <h2>Contact Us</h2>
+  <form action="/contact.php" method="post">
+    <div>
+      <label for="contact_name">Your Name:</label>
+      <input type="text" id="contact_name" name="name" required placeholder="John Doe">
+    </div>
+    <br>
+    <div>
+      <label for="contact_email">Your Email:</label>
+      <input type="email" id="contact_email" name="email" required placeholder="john@example.com">
+    </div>
+    <br>
+    <div>
+      <label for="contact_message">Message:</label><br>
+      <textarea id="contact_message" name="message" rows="5" cols="45" required placeholder="How can we help you?"></textarea>
+    </div>
+    <br>
+    <button type="submit">Send Message</button>
+  </form>
+
+  #38
+
+   <h2>Customer Satisfaction Survey</h2>
+  <form action="/survey.php" method="post">
+    <div>
+      <label for="satisfaction">Overall Satisfaction (1 to 10):</label><br>
+      <input type="range" id="satisfaction" name="satisfaction" min="1" max="10" value="8">
+    </div>
+    <br>
+    <div>
+      <p>Would you recommend us to a friend?</p>
+      <input type="radio" id="rec_yes" name="recommend" value="yes" checked>
+      <label for="rec_yes">Yes</label>
+      
+      <input type="radio" id="rec_no" name="recommend" value="no">
+      <label for="rec_no">No</label>
+      <input type="radio" id="rec_maybe" name="recommend" value="maybe">
+      <label for="rec_maybe">Maybe</label>
+    </div>
+    <br>
+    <div>
+      <label for="comments">Additional Comments:</label><br>
+      <textarea id="comments" name="comments" rows="4" cols="40" placeholder="Share your experience..."></textarea>
+    </div>
+    <br>
+    <button type="submit">Submit Feedback</button>
+  </form>
+
+  #39
+
+   <h2>Applicant Media Upload</h2>
+  <form action="/upload_applicant.php" method="post" enctype="multipart/form-data">
+    <div>
+      <label for="resume">Upload Resume (.pdf, .docx):</label>
+      <input type="file" id="resume" name="resume" accept=".pdf,.docx" required>
+    </div>
+    <br>
+    <div>
+      <label for="photo">Upload Profile Photo (Images only):</label>
+      <input type="file" id="photo" name="photo" accept="image/*">
+    </div>
+    <br>
+    <button type="submit">Upload Documents</button>
+  </form>
+
+  #40
+
+  <h2>Website Search</h2>
+  <form action="/search.php" method="get">
+    <div>
+      <label for="site_search">Search Term:</label>
+      <input type="search" id="site_search" name="q" autofocus placeholder="Search whole site..." required>
+    </div>
+    <br>
+    <button type="submit">Search</button>
+  </form>
+
+  #41
+
+  <h2>Job Application Form</h2>
+  <form action="/submit_application.php" method="post" enctype="multipart/form-data">
+    <!-- Personal Details Fieldset -->
+    <fieldset>
+      <legend>Personal Details</legend>
+      <div>
+        <label for="app_name">Full Name:</label>
+        <input type="text" id="app_name" name="full_name" required placeholder="Jane Doe">
+      </div>
+      <br>
+      <div>
+        <label for="app_email">Email Address:</label>
+        <input type="email" id="app_email" name="email" required placeholder="jane@example.com">
+      </div>
+      <br>
+      <div>
+        <label for="app_phone">Phone Number:</label>
+        <input type="tel" id="app_phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
+      </div>
+    </fieldset>
+    <br>
+    <!-- Experience Fieldset -->
+    <fieldset>
+      <legend>Work Experience & Qualification</legend>
+      <div>
+        <label for="app_exp">Summary of Experience:</label><br>
+        <textarea id="app_exp" name="experience" rows="4" cols="50" placeholder="Describe your relevant background..."></textarea>
+      </div>
+      <br>
+      <div>
+        <label for="app_resume">Attach Resume (PDF Only):</label>
+        <input type="file" id="app_resume" name="resume" accept=".pdf" required>
+      </div>
+    </fieldset>
+    <br>
+    <!-- Employment Type & Terms -->
+    <div>
+      <p>Employment Type Preference:</p>
+      <input type="radio" id="emp_ft" name="employment_type" value="full-time" checked>
+      <label for="emp_ft">Full-Time</label>
+      <input type="radio" id="emp_pt" name="employment_type" value="part-time">
+      <label for="emp_pt">Part-Time</label>
+      <input type="radio" id="emp_contract" name="employment_type" value="contract">
+      <label for="emp_contract">Contract</label>
+    </div>
+    <br>
+    <div>
+      <input type="checkbox" id="terms" name="terms" value="accepted" required>
+      <label for="terms">I agree to the terms and conditions</label>
+    </div>
+    <br>
+    <div>
+      <button type="submit">Submit Application</button>
+      <button type="submit" formaction="/save_application_draft.php" formnovalidate>Save Draft</button>
+    </div>
+  </form>
+
+  #42
+
+   <h2>Form Demonstrating Button Override Attributes</h2>
+  <!-- Form Defaults: Action="/default.php", Method="post", Target="_self" -->
+  <form action="/default.php" method="post" target="_self">
+    <div>
+      <label for="req_username">Username (Required):</label>
+      <input type="text" id="req_username" name="username" required>
+    </div>
+    <br>
+    <div>
+      <label for="req_email">Email (Required):</label>
+      <input type="email" id="req_email" name="email" required>
+    </div>
+    <br>
+    <div>
+      <!-- Button 1: Default Submit -->
+      <button type="submit">Default Submit</button>
+      <br><br>
+      <!-- Button 2: Overrides action URL via formaction -->
+      <button type="submit" formaction="/custom_endpoint.php">Submit to Custom Endpoint (formaction)</button>
+      <br><br>
+      <!-- Button 3: Overrides method to GET via formmethod -->
+      <button type="submit" formmethod="get">Submit via GET Request (formmethod)</button>
+      <br><br>
+      <!-- Button 4: Disables client-side validation via formnovalidate -->
+      <button type="submit" formaction="/draft.php" formnovalidate>Save Draft without Validation (formnovalidate)</button>
+      <br><br>
+      <!-- Button 5: Overrides target window to new tab via formtarget -->
+      <button type="submit" formaction="/preview.php" formtarget="_blank">Preview in New Tab (formtarget)</button>
+    </div>
+  </form>
+
+  
+</body>
+</html>
